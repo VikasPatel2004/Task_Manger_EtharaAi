@@ -1,6 +1,6 @@
-# 🚀 EtharaAI — Team Task Management Platform
+# 🚀 EtharaAI Task Manager
 
-EtharaAI is a professional, full-stack team task management platform designed for modern workflows. It features a robust project-based architecture, real-time updates, and Role-Based Access Control (RBAC).
+EtharaAI Task Manageris a professional, full-stack team task management platform designed for modern workflows. It features a robust project-based architecture, real-time updates, and Role-Based Access Control (RBAC).
 
 ![EtharaAI Logo](./frontend/src/assets/etharalogo.png)
 
