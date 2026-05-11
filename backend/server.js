@@ -2,6 +2,8 @@ import express from 'express'
 import mongoose from 'mongoose'
 import cors from 'cors'
 import dotenv from 'dotenv'
+import path from 'path'
+import { fileURLToPath } from 'url'
 import authRoutes from './routes/auth.js'
 import projectRoutes from './routes/projects.js'
 import { protect } from './middleware/authMiddleware.js'
@@ -10,6 +12,9 @@ import Task from './models/Task.js'
 dotenv.config()
 
 const app = express()
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 // Middleware
 app.use(cors({
@@ -37,6 +42,14 @@ app.get('/api/tasks/mine', protect, async (req, res) => {
 
 // Health check
 app.get('/api/health', (req, res) => res.json({ status: 'OK' }))
+
+// Serve frontend static files in production
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../frontend/dist')))
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'))
+  })
+}
 
 // MongoDB connection & start
 const PORT = process.env.PORT || 5000
