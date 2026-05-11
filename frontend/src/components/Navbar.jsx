@@ -1,13 +1,10 @@
 import React, { useState } from 'react'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
+import logoImg from '../assets/etharalogo.png'
 
 const Logo = () => (
-  <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-    <rect width="28" height="28" rx="8" fill="#6366f1" />
-    <path d="M7 14L12 9L17 14L22 9" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-    <path d="M7 19L12 14L17 19L22 14" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" opacity="0.5" />
-  </svg>
+  <img src={logoImg} alt="EtharaAI Logo" style={{ height: 28, width: 'auto' }} />
 )
 
 const Navbar = () => {
@@ -38,11 +35,8 @@ const Navbar = () => {
     }}>
       <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 20px', height: 56, display: 'flex', alignItems: 'center', gap: 24 }}>
         {/* Logo */}
-        <Link to="/dashboard" style={{ display: 'flex', alignItems: 'center', gap: 10, flexShrink: 0 }}>
+        <Link to="/dashboard" style={{ display: 'flex', alignItems: 'center', flexShrink: 0 }}>
           <Logo />
-          <span style={{ fontWeight: 700, fontSize: 16, letterSpacing: '-0.02em', color: 'var(--text)' }}>
-            EtharaAI
-          </span>
         </Link>
 
         {/* Nav links */}

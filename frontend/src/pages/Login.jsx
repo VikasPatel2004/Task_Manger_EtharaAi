@@ -2,13 +2,10 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import toast from 'react-hot-toast'
+import logoImg from '../assets/etharalogo.png'
 
 const Logo = () => (
-  <svg width="36" height="36" viewBox="0 0 28 28" fill="none">
-    <rect width="28" height="28" rx="8" fill="#6366f1" />
-    <path d="M7 14L12 9L17 14L22 9" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-    <path d="M7 19L12 14L17 19L22 14" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" opacity="0.5" />
-  </svg>
+  <img src={logoImg} alt="EtharaAI Logo" style={{ height: 40, width: 'auto' }} />
 )
 
 const Login = () => {
@@ -38,9 +35,8 @@ const Login = () => {
       <div className="auth-card">
         {/* Logo */}
         <div style={{ textAlign: 'center', marginBottom: 28 }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 10 }}>
             <Logo />
-            <span style={{ fontSize: 22, fontWeight: 800, letterSpacing: '-0.04em' }}>EtharaAI</span>
           </div>
           <p style={{ color: 'var(--muted2)', fontSize: 13 }}>Sign in to your workspace</p>
         </div>

@@ -1,74 +1,117 @@
-# Task Manager — Full Stack App
+# 🚀 EtharaAI — Team Task Management Platform
 
-A full-stack task management application with JWT authentication and CRUD operations.
+EtharaAI is a professional, full-stack team task management platform designed for modern workflows. It features a robust project-based architecture, real-time updates, and Role-Based Access Control (RBAC).
 
-## Tech Stack
-
-### Frontend (`/frontend`)
-| Package | Purpose |
-|---|---|
-| React + Vite | UI Framework |
-| React Router DOM | Client-side routing |
-| Axios | HTTP requests |
-| Context API | Global state (Auth, Tasks) |
-| Tailwind CSS v4 | Styling |
-| React Hot Toast | Notifications |
-
-### Backend (`/backend`)
-| Package | Purpose |
-|---|---|
-| Node.js + Express | Server |
-| MongoDB + Mongoose | Database & ODM |
-| JWT | Authentication tokens |
-| bcryptjs | Password hashing |
-| dotenv | Environment variables |
-| cors | Cross-origin requests |
-| nodemon | Dev hot-reload |
+![EtharaAI Logo](./frontend/src/assets/etharalogo.png)
 
 ---
 
-## Getting Started
+## ✨ Key Features
 
-### 1. Backend Setup
-```bash
-cd backend
-# Edit .env and set your MONGO_URI and JWT_SECRET
-npm run dev     # Development (nodemon)
-npm start       # Production
-```
-
-### 2. Frontend Setup
-```bash
-cd frontend
-npm run dev     # Starts at http://localhost:5173
-```
-
-> The frontend proxies `/api/*` requests to `http://localhost:5000`
+- **Project-Based Workspaces:** Organize tasks within dedicated projects.
+- **Role-Based Access Control (RBAC):** 
+  - **Admin:** Full control over projects, members, and settings.
+  - **Member:** Create, edit, and view tasks within assigned projects.
+- **Interactive Dashboard:** Personal task tracking across all projects.
+- **Real-time Notifications:** Smooth user experience with React Hot Toast.
+- **Secure Authentication:** JWT-based login with bcrypt password hashing.
+- **Premium UI:** Modern, dark-themed interface built with Tailwind CSS v4.
 
 ---
 
-## Environment Variables (`backend/.env`)
+## 🛠️ Tech Stack
+
+### Frontend
+- **React + Vite:** Lightning-fast UI development.
+- **Context API:** Global state management for Auth, Projects, and Tasks.
+- **Tailwind CSS v4:** Modern, utility-first styling.
+- **Axios:** Streamlined API communication with relative path proxying.
+
+### Backend
+- **Node.js + Express:** Scalable server architecture.
+- **MongoDB + Mongoose:** Reliable NoSQL database with strict schema validation.
+- **JWT (JSON Web Tokens):** Secure, stateless authentication.
+- **Express 5:** Using the latest features of the Express framework.
+
+---
+
+## 🚀 Getting Started (Local Development)
+
+### 1. Prerequisites
+- Node.js (v20+ recommended)
+- MongoDB Atlas account or local MongoDB instance
+
+### 2. Clone the Repository
+```bash
+git clone <your-repo-url>
+cd Task_Manager
 ```
+
+### 3. Install Dependencies
+You can install everything from the root folder:
+```bash
+npm install
+```
+
+### 4. Environment Setup
+Create a `.env` file in the `/backend` directory:
+```env
 PORT=5000
-MONGO_URI=mongodb://localhost:27017/taskmanager
-JWT_SECRET=your_super_secret_key
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret_key
 JWT_EXPIRES_IN=7d
 CLIENT_URL=http://localhost:5173
+NODE_ENV=development
 ```
 
-## API Endpoints
+### 5. Run the Application
+Start both backend and frontend (separate terminals):
 
-### Auth
-| Method | Endpoint | Description |
-|---|---|---|
-| POST | /api/auth/register | Register new user |
-| POST | /api/auth/login | Login |
-| GET | /api/auth/profile | Get profile (protected) |
+**Backend:**
+```bash
+cd backend
+npm run dev
+```
 
-### Tasks (all protected)
-| Method | Endpoint | Description |
-|---|---|---|
-| GET | /api/tasks | Get all tasks (supports ?status= & ?priority=) |
-| POST | /api/tasks | Create task |
-| PUT | /api/tasks/:id | Update task |
-| DELETE | /api/tasks/:id | Delete task |
+**Frontend:**
+```bash
+cd frontend
+npm run dev
+```
+The app will be available at `http://localhost:5173`.
+
+---
+
+## ☁️ Deployment (Railway)
+
+This project is optimized for a **Monolith Deployment** (Backend serves Frontend).
+
+1. **Connect to Railway:** Link your GitHub repository.
+2. **Set Environment Variables:**
+   - `NODE_ENV`: `production`
+   - `MONGO_URI`: Your Atlas connection string
+   - `JWT_SECRET`: Your secret key
+   - `CLIENT_URL`: Your Railway generated URL
+3. **Build Command:** `npm run build`
+4. **Start Command:** `npm start`
+
+---
+
+## 🔗 API Documentation (RBAC Protected)
+
+### Projects
+- `GET /api/projects` - Get all your projects
+- `POST /api/projects` - Create a new project (**Admin**)
+- `DELETE /api/projects/:projectId` - Delete project (**Admin**)
+
+### Tasks
+- `GET /api/projects/:projectId/tasks` - View project tasks
+- `POST /api/projects/:projectId/tasks` - Add task to project
+- `GET /api/tasks/mine` - View all tasks assigned to you
+
+---
+
+## 📝 License
+Distributed under the MIT License. See `LICENSE` for more information.
+
+Developed with ❤️ by **EtharaAI Team**
